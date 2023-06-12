@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Software License Agreement (BSD License)
 #
 # Copyright (c) 2008, Willow Garage, Inc.
@@ -33,16 +33,18 @@
 #
 # Revision $Id$
 
-## Simple talker demo that listens to std_msgs/Strings published 
-## to the 'chatter' topic
+# Simple talker demo that listens to std_msgs/Strings published
+# to the 'chatter' topic
 
 import rospy
 from std_msgs.msg import String
 
+
 def callback(data):
     # rospy.loginfo(rospy.get_caller_id() + 'I heard %s', data.data)
-    rospy.loginfo('I heard %s', data.data)
+    rospy.loginfo("I heard %s", data.data)
     # rospy.sleep(1.0)
+
 
 def listener():
 
@@ -51,12 +53,13 @@ def listener():
     # anonymous=True flag means that rospy will choose a unique
     # name for our 'listener' node so that multiple listeners can
     # run simultaneously.
-    rospy.init_node('listener', anonymous=True)
+    rospy.init_node("listener", anonymous=True)
 
-    rospy.Subscriber('chatter_recv', String, callback)
+    rospy.Subscriber("chatter_recv", String, callback)
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     listener()

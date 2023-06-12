@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Software License Agreement (BSD License)
 #
 # Copyright (c) 2008, Willow Garage, Inc.
@@ -33,23 +33,25 @@
 #
 # Revision $Id$
 
-## Simple talker demo that published std_msgs/Strings messages
-## to the 'chatter' topic
+# Simple talker demo that published std_msgs/Strings messages
+# to the 'chatter' topic
 
 import rospy
 from std_msgs.msg import String
 
+
 def talker():
-    pub = rospy.Publisher('chatter', String, queue_size=10)
-    rospy.init_node('talker', anonymous=True)
-    rate = rospy.Rate(100) # 100hz
+    pub = rospy.Publisher("chatter", String, queue_size=10)
+    rospy.init_node("talker", anonymous=True)
+    rate = rospy.Rate(100)  # 100hz
     while not rospy.is_shutdown():
         hello_str = "hello world %s" % rospy.get_time()
         rospy.loginfo(hello_str)
         pub.publish(hello_str)
         rate.sleep()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     try:
         talker()
     except rospy.ROSInterruptException:
