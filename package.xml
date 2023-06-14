@@ -31,5 +31,7 @@
   <exec_depend>nav_msgs</exec_depend>
   <exec_depend>quadrotor_msgs</exec_depend>
   <exec_depend>libzmqpp-dev</exec_depend>
-
+  <build_depend>std_srvs</build_depend>
+  <build_export_depend>std_srvs</build_export_depend>
+  <exec_depend>std_srvs</exec_depend>
 </package>

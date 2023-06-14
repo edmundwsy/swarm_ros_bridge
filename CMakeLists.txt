@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   nav_msgs
   quadrotor_msgs
+  std_srvs
 )
 
 catkin_package(
@@ -24,6 +25,22 @@ include_directories(
 add_executable(bridge_node src/bridge_node.cpp)
 
 target_link_libraries(bridge_node
+  ${catkin_LIBRARIES}
+  zmq
+  zmqpp
+)
+
+
+# service files
+add_executable(server_node src/service_server_node.cpp)
+target_link_libraries(server_node
+  ${catkin_LIBRARIES}
+  zmq
+  zmqpp
+)
+
+add_executable(client_node src/service_client_node.cpp)
+target_link_libraries(client_node
   ${catkin_LIBRARIES}
   zmq
   zmqpp
