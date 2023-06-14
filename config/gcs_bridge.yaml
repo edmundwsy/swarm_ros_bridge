@@ -10,31 +10,39 @@ IP:
   self: "*" # '*' stands for all self IPs
   drone1: 10.42.0.119
   drone2: 10.42.0.62
+  drone2: 10.42.0.157
   neighbor: 127.0.0.1 # modify to the IP of other machines
 
 ####### Send these ROS messages to remote robots #######
 ## if no send_topics needed, comment all these out
 send_topics:
-  - topic_name: chatter # send the messages of this ROS topic
-    msg_type: std_msgs/String # ROS message type (rosmsg style)
-    max_freq: 1000 # max sending frequency (Hz) int
-    srcIP: self # IP
-    srcPort: 3001 # ports of send_topics should be different
-  - topic_name: chatter # send the messages of this ROS topic
-    msg_type: std_msgs/String # ROS message type (rosmsg style)
-    max_freq: 1000 # max sending frequency (Hz) int
-    srcIP: self # IP
-    srcPort: 3002 # ports of send_topics should be different
+  - topic_name: /drone1/optitrack/pose # send the messages of this ROS topic
+    msg_type: geometry_msgs/PoseStamped 
+    max_freq: 100
+    srcIP: self
+    srcPort: 3001
+  - topic_name: /drone2/optitrack/pose
+    msg_type: geometry_msgs/PoseStamped 
+    max_freq: 100 
+    srcIP: self 
+    srcPort: 3002 
+  - topic_name: /drone3/optitrack/pose
+    msg_type: geometry_msgs/PoseStamped 
+    max_freq: 100 
+    srcIP: self 
+    srcPort: 3003 
 
 ####### receive these ROS messages from remote robots #######
 ## if no recv_topics needed, comment all these out
 recv_topics:
-  - topic_name: chatter_recv_1 # the received messages will be published in this topic
+  - topic_name: /shared_trajectory # the received messages will be published in this topic
     msg_type: std_msgs/String # ROS message type (rosmsg style)
     srcIP: drone1 # message source IPname
-    srcPort: 3003 # message source port
+    srcPort: 3005 # message source port
 
   - topic_name: chatter_recv_2 # the received messages will be published in this topic
     msg_type: std_msgs/String # ROS message type (rosmsg style)
     srcIP: drone2 # message source IPname
     srcPort: 3004 # message source port
+
+

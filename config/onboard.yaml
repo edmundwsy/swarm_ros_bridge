@@ -10,6 +10,7 @@ IP:
   self: "*" # '*' stands for all self IPs
   drone1: 10.42.0.119
   drone2: 10.42.0.62
+  drone2: 10.42.0.157
   neighbor: 127.0.0.1 # modify to the IP of other machines
 
 ####### Send these ROS messages to remote robots #######
@@ -19,12 +20,17 @@ send_topics:
     msg_type: std_msgs/String # ROS message type (rosmsg style)
     max_freq: 1000 # max sending frequency (Hz) int
     srcIP: self # IP
-    srcPort: 3001 # ports of send_topics should be different
-  - topic_name: chatter # send the messages of this ROS topic
-    msg_type: std_msgs/String # ROS message type (rosmsg style)
-    max_freq: 1000 # max sending frequency (Hz) int
-    srcIP: self # IP
     srcPort: 3002 # ports of send_topics should be different
+  - topic_name: /drone1/shared_trajectory
+    msg_type: quadrotor_msgs/BezierCurve
+    max_freq: 100
+    srcIP: self
+    srcPort: 3500
+  - topic_name: /drone1/vis/
+    msg_type: visualization_msgs/Marker
+    max_freq: 20
+    srcIP: self
+    srcPort: 3500
 
 ####### receive these ROS messages from remote robots #######
 ## if no recv_topics needed, comment all these out
@@ -34,7 +40,14 @@ recv_topics:
     srcIP: drone1 # message source IPname
     srcPort: 3003 # message source port
 
-  - topic_name: chatter_recv_2 # the received messages will be published in this topic
-    msg_type: std_msgs/String # ROS message type (rosmsg style)
-    srcIP: drone2 # message source IPname
-    srcPort: 3004 # message source port
+  - topic_name: /drone1/shared_trajectory
+    msg_type: quadrotor_msgs/BezierCurve
+    max_freq: 100
+    srcIP: self
+    srcPort: 3005
+
+  - topic_name: /drone1/optitrack/pose # send the messages of this ROS topic
+    msg_type: geometry_msgs/PoseStamped 
+    max_freq: 100
+    srcIP: laptop
+    srcPort: 3001
