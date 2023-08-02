@@ -28,12 +28,12 @@ send_topics:
   - topic_name: /broadcast_particles
     msg_type: geometry_msgs/PolygonStamped
     max_freq: 5
-    srcPort: 3121
+    srcPort: 3104
     srcIP: self
   - topic_name: /broadcast_traj
     msg_type: traj_utils/BezierTraj
     max_freq: 10
-    srcPort: 3122
+    srcPort: 3105
     srcIP: self
   - topic_name: /planner/map/occupancy_inflated
     msg_type: sensor_msgs/PointCloud2
@@ -71,20 +71,20 @@ recv_topics:
 
   - topic_name: /broadcast_particles
     msg_type: geometry_msgs/PolygonStamped
-    srcPort: 3221
+    srcPort: 3204
     srcIP: drone2
 
   - topic_name: /broadcast_particles
     msg_type: geometry_msgs/PolygonStamped
-    srcPort: 3321
+    srcPort: 3304
     srcIP: drone3
 
   - topic_name: /broadcast_traj
     msg_type: traj_utils/BezierTraj
-    srcPort: 3222
+    srcPort: 3205
     srcIP: drone2
 
   - topic_name: /broadcast_traj
     msg_type: traj_utils/BezierTraj
-    srcPort: 3322
+    srcPort: 3305
     srcIP: drone3

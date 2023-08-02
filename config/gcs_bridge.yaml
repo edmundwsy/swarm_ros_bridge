@@ -10,39 +10,92 @@ IP:
   self: "*" # '*' stands for all self IPs
   drone1: 10.42.0.119
   drone2: 10.42.0.62
-  drone2: 10.42.0.157
+  drone3: 10.42.0.157
   neighbor: 127.0.0.1 # modify to the IP of other machines
 
 ####### Send these ROS messages to remote robots #######
 ## if no send_topics needed, comment all these out
 send_topics:
   - topic_name: /drone1/optitrack/pose # send the messages of this ROS topic
-    msg_type: geometry_msgs/PoseStamped 
-    max_freq: 100
+    msg_type: geometry_msgs/PoseStamped
+    max_freq: 200
     srcIP: self
-    srcPort: 3001
+    srcPort: 3100
   - topic_name: /drone2/optitrack/pose
-    msg_type: geometry_msgs/PoseStamped 
-    max_freq: 100 
-    srcIP: self 
-    srcPort: 3002 
+    msg_type: geometry_msgs/PoseStamped
+    max_freq: 200
+    srcIP: self
+    srcPort: 3200
   - topic_name: /drone3/optitrack/pose
-    msg_type: geometry_msgs/PoseStamped 
-    max_freq: 100 
-    srcIP: self 
-    srcPort: 3003 
+    msg_type: geometry_msgs/PoseStamped
+    max_freq: 200
+    srcIP: self
+    srcPort: 3300
+  - topic_name: /traj_start_trigger
+    msg_type: geometry_msgs/PoseStamped
+    max_freq: 1
+    srcIP: self
+    srcPort: 3011
 
 ####### receive these ROS messages from remote robots #######
 ## if no recv_topics needed, comment all these out
 recv_topics:
-  - topic_name: /shared_trajectory # the received messages will be published in this topic
-    msg_type: std_msgs/String # ROS message type (rosmsg style)
-    srcIP: drone1 # message source IPname
-    srcPort: 3005 # message source port
+  - topic_name: /broadcast_particles
+    msg_type: geometry_msgs/PolygonStamped
+    srcPort: 3104
+    srcIP: drone1
 
-  - topic_name: chatter_recv_2 # the received messages will be published in this topic
-    msg_type: std_msgs/String # ROS message type (rosmsg style)
-    srcIP: drone2 # message source IPname
-    srcPort: 3004 # message source port
+  - topic_name: /broadcast_particles
+    msg_type: geometry_msgs/PolygonStamped
+    srcPort: 3204
+    srcIP: drone2
 
+  - topic_name: /broadcast_particles
+    msg_type: geometry_msgs/PolygonStamped
+    srcPort: 3304
+    srcIP: drone3
 
+  - topic_name: /broadcast_traj
+    msg_type: traj_utils/BezierTraj
+    srcPort: 3105
+    srcIP: drone1
+
+  - topic_name: /broadcast_traj
+    msg_type: traj_utils/BezierTraj
+    srcPort: 3205
+    srcIP: drone2
+
+  - topic_name: /broadcast_traj
+    msg_type: traj_utils/BezierTraj
+    srcPort: 3305
+    srcIP: drone3
+
+  ## local_position/pose
+  - topic_name: /drone1/mavros/local_position/pose
+    msg_type: geometry_msgs/PoseStamped
+    srcIP: drone1
+    srcPort: 3101
+
+  - topic_name: /drone2/mavros/local_position/pose
+    msg_type: geometry_msgs/PoseStamped
+    srcIP: drone2
+    srcPort: 3201
+
+  - topic_name: /drone3/mavros/local_position/pose
+    msg_type: geometry_msgs/PoseStamped
+    srcIP: drone3
+    srcPort: 3301
+
+  ## drone1 visualization
+  - topic_name: /drone1/planner/map/occupancy_inflated
+    msg_type: sensor_msgs/PointCloud2
+    srcPort: 3111
+    srcIP: drone1
+  - topic_name: /drone1/planner/vis_corridor
+    msg_type: decomp_ros_msgs/PolyhedronArray
+    srcPort: 3112
+    srcIP: drone1
+  - topic_name: /drone1/planner/vis_astar_path
+    msg_type: visualization_msgs/Marker
+    srcPort: 3113
+    srcIP: drone1
