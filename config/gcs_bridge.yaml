@@ -91,11 +91,51 @@ recv_topics:
     msg_type: sensor_msgs/PointCloud2
     srcPort: 3111
     srcIP: drone1
-  - topic_name: /drone1/planner/vis_corridor
-    msg_type: decomp_ros_msgs/PolyhedronArray
+  - topic_name: /drone1/planner/vis_mesh
+    msg_type: visualization_msgs/Marker
     srcPort: 3112
     srcIP: drone1
   - topic_name: /drone1/planner/vis_astar_path
     msg_type: visualization_msgs/Marker
     srcPort: 3113
     srcIP: drone1
+  - topic_name: /drone1/planner/vis_obstacle
+    msg_type: sensor_msgs/PointCloud2
+    srcPort: 3114
+    srcIP: drone1
+
+  ## drone2 visualization
+  - topic_name: /drone2/planner/map/occupancy_inflated
+    msg_type: sensor_msgs/PointCloud2
+    srcPort: 3211
+    srcIP: drone2
+  - topic_name: /drone2/planner/vis_mesh
+    msg_type: visualization_msgs/Marker
+    srcPort: 3212
+    srcIP: drone2
+  - topic_name: /drone2/planner/vis_astar_path
+    msg_type: visualization_msgs/Marker
+    srcPort: 3213
+    srcIP: drone2
+  - topic_name: /drone2/planner/vis_obstacle
+    msg_type: sensor_msgs/PointCloud2
+    srcPort: 3214
+    srcIP: drone2
+
+  ## drone3 visualization
+  - topic_name: /drone3/planner/map/occupancy_inflated
+    msg_type: sensor_msgs/PointCloud2
+    srcPort: 3311
+    srcIP: drone3
+  - topic_name: /drone3/planner/vis_mesh
+    msg_type: visualization_msgs/Marker
+    srcPort: 3312
+    srcIP: drone3
+  - topic_name: /drone3/planner/vis_astar_path
+    msg_type: visualization_msgs/Marker
+    srcPort: 3313
+    srcIP: drone3
+  - topic_name: /drone3/planner/vis_obstacle
+    msg_type: sensor_msgs/PointCloud2
+    srcPort: 3314
+    srcIP: drone3
