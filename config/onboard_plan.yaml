@@ -40,8 +40,8 @@ send_topics:
     max_freq: 20
     srcPort: 3111
     srcIP: self
-  - topic_name: /planner/vis_corridor
-    msg_type: decomp_ros_msgs/PolyhedronArray
+  - topic_name: /planner/vis_mesh
+    msg_type: visualization_msgs/Marker
     max_freq: 20
     srcPort: 3112
     srcIP: self
