@@ -16,6 +16,11 @@ IP:
 ####### Send these ROS messages to remote robots #######
 ## if no send_topics needed, comment all these out
 send_topics:
+  #   - topic_name: /drone1/shared_trajectory
+  #     msg_type: quadrotor_msgs/BezierCurve
+  #     max_freq: 100
+  #     srcIP: self
+  #     srcPort: 3500
   - topic_name: /mavros/local_position/pose
     msg_type: geometry_msgs/PoseStamped
     max_freq: 100
@@ -25,31 +30,12 @@ send_topics:
     msg_type: geometry_msgs/PoseStamped
     srcIP: self
     srcPort: 3102
-  - topic_name: /broadcast_particles
-    msg_type: geometry_msgs/PolygonStamped
-    max_freq: 5
-    srcPort: 3104
+  - topic_name: /traj_server/desired_position
+    msg_type: geometry_msgs/PoseStamped
+    max_freq: 100
     srcIP: self
-  - topic_name: /broadcast_traj
-    msg_type: traj_utils/BezierTraj
-    max_freq: 10
-    srcPort: 3105
-    srcIP: self
-  - topic_name: /planner/map/occupancy_inflated
-    msg_type: sensor_msgs/PointCloud2
-    max_freq: 20
-    srcPort: 3111
-    srcIP: self
-  - topic_name: /planner/vis_mesh
-    msg_type: visualization_msgs/Marker
-    max_freq: 20
-    srcPort: 3112
-    srcIP: self
-  - topic_name: /planner/vis_astar_path
-    msg_type: visualization_msgs/Marker
-    max_freq: 20
-    srcPort: 3113
-    srcIP: self
+    srcPort: 3122
+
 
 ####### receive these ROS messages from remote robots #######
 ## if no recv_topics needed, comment all these out
@@ -68,23 +54,3 @@ recv_topics:
     msg_type: geometry_msgs/PoseStamped
     srcIP: laptop
     srcPort: 3100
-
-  - topic_name: /broadcast_particles
-    msg_type: geometry_msgs/PolygonStamped
-    srcPort: 3204
-    srcIP: drone2
-
-  - topic_name: /broadcast_particles
-    msg_type: geometry_msgs/PolygonStamped
-    srcPort: 3304
-    srcIP: drone3
-
-  - topic_name: /broadcast_traj
-    msg_type: traj_utils/BezierTraj
-    srcPort: 3205
-    srcIP: drone2
-
-  - topic_name: /broadcast_traj
-    msg_type: traj_utils/BezierTraj
-    srcPort: 3305
-    srcIP: drone3

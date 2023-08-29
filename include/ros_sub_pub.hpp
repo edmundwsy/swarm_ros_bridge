@@ -27,9 +27,9 @@
 #define MSG_TYPE1  "sensor_msgs/Imu"
 #define MSG_CLASS1 sensor_msgs::Imu
 
-#include <geometry_msgs/Twist.h>
-#define MSG_TYPE2  "geometry_msgs/Twist"
-#define MSG_CLASS2 geometry_msgs::Twist
+#include <geometry_msgs/PolygonStamped.h>
+#define MSG_TYPE2  "geometry_msgs/PolygonStamped"
+#define MSG_CLASS2 geometry_msgs::PolygonStamped
 
 #include <std_msgs/String.h>
 #define MSG_TYPE3  "std_msgs/String"
@@ -39,6 +39,29 @@
 #define MSG_TYPE4  "geometry_msgs/PoseStamped"
 #define MSG_CLASS4 geometry_msgs::PoseStamped
 
+#include <traj_utils/BezierTraj.h>
+#define MSG_TYPE5  "traj_utils/BezierTraj"
+#define MSG_CLASS5 traj_utils::BezierTraj
+
+#include <sensor_msgs/PointCloud2.h>
+#define MSG_TYPE6  "sensor_msgs/PointCloud2"
+#define MSG_CLASS6 sensor_msgs::PointCloud2
+
+#include <visualization_msgs/Marker.h>
+#define MSG_TYPE7  "visualization_msgs/Marker"
+#define MSG_CLASS7 visualization_msgs::Marker
+
+#include <decomp_ros_msgs/PolyhedronArray.h>
+#define MSG_TYPE8  "decomp_ros_msgs/PolyhedronArray"
+#define MSG_CLASS8 decomp_ros_msgs::PolyhedronArray
+
+#include <nav_msgs/Path.h>
+#define MSG_TYPE9  "nav_msgs/Path"
+#define MSG_CLASS9 nav_msgs::Path
+
+#include <nav_msgs/Odometry.h>
+#define MSG_TYPE10  "nav_msgs/Odometry"
+#define MSG_CLASS10 nav_msgs::Odometry
 // ......
 
 // #include <xxx/yy.h>
