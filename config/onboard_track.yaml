@@ -9,32 +9,27 @@
 IP:
   self: "*" # '*' stands for all self IPs
   drone1: 10.42.0.119
-  drone3: 10.42.0.157
+  drone2: 10.42.0.63
   laptop: 10.42.0.1
   neighbor: 127.0.0.1 # modify to the IP of other machines
 
 ####### Send these ROS messages to remote robots #######
 ## if no send_topics needed, comment all these out
 send_topics:
-  #   - topic_name: /drone1/shared_trajectory
-  #     msg_type: quadrotor_msgs/BezierCurve
-  #     max_freq: 100
-  #     srcIP: self
-  #     srcPort: 3500
   - topic_name: /mavros/local_position/pose
     msg_type: geometry_msgs/PoseStamped
     max_freq: 100
     srcIP: self
-    srcPort: 3101
+    srcPort: 3301
   - topic_name: /mavros/global_position/pose
     msg_type: geometry_msgs/PoseStamped
     srcIP: self
-    srcPort: 3102
+    srcPort: 3302
   - topic_name: /traj_server/desired_position
     msg_type: geometry_msgs/PoseStamped
     max_freq: 100
     srcIP: self
-    srcPort: 3122
+    srcPort: 3322
 
 
 ####### receive these ROS messages from remote robots #######
@@ -53,4 +48,4 @@ recv_topics:
   - topic_name: /mavros/vision_pose/pose # send the messages of this ROS topic
     msg_type: geometry_msgs/PoseStamped
     srcIP: laptop
-    srcPort: 3100
+    srcPort: 3300
