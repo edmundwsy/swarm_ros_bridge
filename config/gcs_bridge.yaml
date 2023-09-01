@@ -11,6 +11,7 @@ IP:
   drone1: 10.42.0.119
   drone2: 10.42.0.63
   drone3: 10.42.0.157
+  friend: 10.42.0.205
   neighbor: 127.0.0.1 # modify to the IP of other machines
 
 ####### Send these ROS messages to remote robots #######
@@ -129,6 +130,10 @@ recv_topics:
     msg_type: sensor_msgs/PointCloud2
     srcPort: 3114
     srcIP: drone1
+  - topic_name: /drone1/planner/trajectory
+    msg_type: traj_utils/BezierTraj
+    srcPort: 3115
+    srcIP: drone1
 
   ## drone2 visualization
   - topic_name: /drone2/planner/map/occupancy_inflated
@@ -147,6 +152,10 @@ recv_topics:
     msg_type: sensor_msgs/PointCloud2
     srcPort: 3214
     srcIP: drone2
+  - topic_name: /drone2/planner/trajectory
+    msg_type: traj_utils/BezierTraj
+    srcPort: 3215
+    srcIP: drone2
 
   ## drone3 visualization
   - topic_name: /drone3/planner/map/occupancy_inflated
@@ -164,4 +173,8 @@ recv_topics:
   - topic_name: /drone3/planner/vis_obstacle
     msg_type: sensor_msgs/PointCloud2
     srcPort: 3314
+    srcIP: drone3
+  - topic_name: /drone3/planner/trajectory
+    msg_type: traj_utils/BezierTraj
+    srcPort: 3315
     srcIP: drone3
