@@ -9,7 +9,7 @@
 IP:
   self: "*" # '*' stands for all self IPs
   drone1: 10.42.0.119
-  drone2: 10.42.0.62
+  drone2: 10.42.0.63
   drone3: 10.42.0.157
   neighbor: 127.0.0.1 # modify to the IP of other machines
 
@@ -35,7 +35,17 @@ send_topics:
     msg_type: geometry_msgs/PoseStamped
     max_freq: 1
     srcIP: self
+    srcPort: 3001
+  - topic_name: /pedestrian1/optitrack/pose
+    msg_type: geometry_msgs/PoseStamped
+    max_freq: 50
+    srcIP: self
     srcPort: 3011
+  - topic_name: /pedestrian2/optitrack/pose
+    msg_type: geometry_msgs/PoseStamped
+    max_freq: 50
+    srcIP: self
+    srcPort: 3012
 
 ####### receive these ROS messages from remote robots #######
 ## if no recv_topics needed, comment all these out
@@ -85,6 +95,22 @@ recv_topics:
     msg_type: geometry_msgs/PoseStamped
     srcIP: drone3
     srcPort: 3301
+
+  ## traj_server/desired_position
+  - topic_name: /drone1/traj_server/desired_position
+    msg_type: geometry_msgs/PoseStamped
+    srcIP: drone1
+    srcPort: 3122
+
+  - topic_name: /drone2/traj_server/desired_position
+    msg_type: geometry_msgs/PoseStamped
+    srcIP: drone2
+    srcPort: 3222
+
+  - topic_name: /drone3/traj_server/desired_position
+    msg_type: geometry_msgs/PoseStamped
+    srcIP: drone3
+    srcPort: 3322
 
   ## drone1 visualization
   - topic_name: /drone1/planner/map/occupancy_inflated
