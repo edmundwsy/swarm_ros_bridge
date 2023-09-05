@@ -93,3 +93,8 @@ recv_topics:
     msg_type: traj_utils/BezierTraj
     srcPort: 3105
     srcIP: drone1
+
+  - topic_name: /px4ctrl/takeoff_land
+    msg_type: quadrotor_msgs/TakeoffLand
+    max_freq: 10
+    srcPort: 3002
