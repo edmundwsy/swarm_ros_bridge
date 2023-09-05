@@ -23,9 +23,9 @@
 #define __ROS_SUB_PUB__
 #include <ros/ros.h>
 
-#include <sensor_msgs/Imu.h>
-#define MSG_TYPE1  "sensor_msgs/Imu"
-#define MSG_CLASS1 sensor_msgs::Imu
+#include <quadrotor_msgs/TakeoffLand.h>
+#define MSG_TYPE1  "quadrotor_msgs/TakeoffLand"
+#define MSG_CLASS1 quadrotor_msgs::TakeoffLand
 
 #include <geometry_msgs/PolygonStamped.h>
 #define MSG_TYPE2  "geometry_msgs/PolygonStamped"

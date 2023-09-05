@@ -10,7 +10,6 @@ IP:
   self: "*" # '*' stands for all self IPs
   drone1: 10.42.0.119
   drone2: 10.42.0.62
-  drone2: 10.42.0.157
   neighbor: 127.0.0.1 # modify to the IP of other machines
 
 ####### Send these ROS messages to remote robots #######
@@ -27,10 +26,35 @@ send_topics:
     srcIP: self 
     srcPort: 3002 
   - topic_name: /drone3/optitrack/pose
-    msg_type: geometry_msgs/PoseStamped 
-    max_freq: 100 
-    srcIP: self 
-    srcPort: 3003 
+    msg_type: geometry_msgs/PoseStamped
+    max_freq: 200
+    srcIP: self
+    srcPort: 3300
+  - topic_name: /traj_start_trigger
+    msg_type: geometry_msgs/PoseStamped
+    max_freq: 1
+    srcIP: self
+    srcPort: 3001
+  - topic_name: /pedestrian1/optitrack/pose
+    msg_type: geometry_msgs/PoseStamped
+    max_freq: 50
+    srcIP: self
+    srcPort: 3011
+  - topic_name: /pedestrian2/optitrack/pose
+    msg_type: geometry_msgs/PoseStamped
+    max_freq: 50
+    srcIP: self
+    srcPort: 3012
+  - topic_name: /pedestrian3/optitrack/pose
+    msg_type: geometry_msgs/PoseStamped
+    max_freq: 50
+    srcIP: self
+    srcPort: 3013
+  - topic_name: /px4ctrl/takeoff_land
+    msg_type: quadrotor_msgs/TakeoffLand
+    max_freq: 10
+    srcIP: self
+    srcPort: 3002
 
 ####### receive these ROS messages from remote robots #######
 ## if no recv_topics needed, comment all these out
