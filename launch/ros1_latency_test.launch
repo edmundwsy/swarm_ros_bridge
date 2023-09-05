@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+  <env name="ROSCONSOLE_FORMAT" value="[${node}][${time:%H:%M:%S%F}][${severity}]:${message}"/>
+
+  <!-- <node pkg="swarm_ros_bridge" type="bridge_node" name="swarm_bridge_node" output="screen" >
+    <rosparam command="load" file="$(find swarm_ros_bridge)/config/latency_test.yaml" />
+  </node> -->
+  <node pkg="swarm_ros_bridge" type="latency_talker.py" name="talker13">
+    <remap from="chatter" to="chatter13"/>
+    <remap from="chatter_feedback" to="feedback13" />
+  </node>
+  <node pkg="swarm_ros_bridge" type="latency_talker.py" name="talker12">
+    <remap from="chatter" to="chatter12"/>
+    <remap from="chatter_feedback" to="feedback12" />
+  </node>
+  <node pkg="swarm_ros_bridge" type="latency_listener.py" name="listener31" output="screen">
+    <remap from="chatter" to="chatter31" />
+    <remap from="chatter_feedback" to="feedback31" />
+  </node>
+  <node pkg="swarm_ros_bridge" type="latency_listener.py" name="listener21" output="screen">
+    <remap from="chatter" to="chatter21" />
+    <remap from="chatter_feedback" to="feedback21" />
+  </node>
+
+</launch>

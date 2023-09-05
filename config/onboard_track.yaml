@@ -9,7 +9,7 @@
 IP:
   self: "*" # '*' stands for all self IPs
   drone1: 10.42.0.119
-  drone2: 10.42.0.63
+  drone2: 10.42.0.62
   laptop: 10.42.0.1
   neighbor: 127.0.0.1 # modify to the IP of other machines
 
@@ -43,7 +43,7 @@ recv_topics:
   - topic_name: /traj_start_trigger
     msg_type: geometry_msgs/PoseStamped
     srcIP: laptop
-    srcPort: 3011
+    srcPort: 3001
 
   - topic_name: /mavros/vision_pose/pose # send the messages of this ROS topic
     msg_type: geometry_msgs/PoseStamped
