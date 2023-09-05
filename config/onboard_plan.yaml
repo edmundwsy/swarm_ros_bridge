@@ -50,6 +50,11 @@ send_topics:
     max_freq: 20
     srcPort: 3213
     srcIP: self
+  - topic_name: /planner/trajectory
+    msg_type: traj_utils/BezierTraj
+    max_freq: 20
+    srcPort: 3215
+    srcIP: self
 
 ####### receive these ROS messages from remote robots #######
 ## if no recv_topics needed, comment all these out
@@ -62,7 +67,7 @@ recv_topics:
   - topic_name: /traj_start_trigger
     msg_type: geometry_msgs/PoseStamped
     srcIP: laptop
-    srcPort: 3011
+    srcPort: 3001
 
   - topic_name: /mavros/vision_pose/pose # send the messages of this ROS topic
     msg_type: geometry_msgs/PoseStamped
