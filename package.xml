@@ -1,10 +1,10 @@
-<?xml version="1.0"?>
+<?xml version="1.2"?>
 <package format="2">
   <name>swarm_ros_bridge</name>
-  <version>1.0.0</version>
+  <version>1.0.2</version>
   <description>The swarm_ros_bridge package</description>
 
-  <maintainer email="shupeixuan@qq.com">shupeixuan</maintainer>
+  <maintainer email="siyuanwu99@gmail.com">siyuanwu</maintainer>
 
   <license>BSD-3-Clause</license>
   
@@ -18,12 +18,16 @@
   <build_depend>nav_msgs</build_depend>
   <build_depend>quadrotor_msgs</build_depend>
   <build_depend>libzmqpp-dev</build_depend>
+  <!-- <build_depend>bspline</build_depend> -->
+  <!-- <build_depend>exploration_manager</build_depend> -->
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>std_msgs</build_export_depend>
   <build_export_depend>geometry_msgs</build_export_depend>
   <build_export_depend>sensor_msgs</build_export_depend>
   <build_export_depend>nav_msgs</build_export_depend>
   <build_export_depend>quadrotor_msgs</build_export_depend>
+  <!-- <build_export_depend>bspline</build_export_depend> -->
+  <!-- <build_export_depend>exploration_manager</build_export_depend> -->
   <exec_depend>roscpp</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
@@ -31,5 +35,7 @@
   <exec_depend>nav_msgs</exec_depend>
   <exec_depend>quadrotor_msgs</exec_depend>
   <exec_depend>libzmqpp-dev</exec_depend>
+  <!-- <exec_depend>bspline</exec_depend> -->
+  <!-- <exec_depend>exploration_manager</exec_depend> -->
 
 </package>

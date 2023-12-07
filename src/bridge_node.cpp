@@ -176,6 +176,9 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "swarm_bridge");
   ros::NodeHandle nh("~");
   ros::NodeHandle nh_public;
+
+  ros::AsyncSpinner spinner(6);  // 4 threads
+
   ns = ros::this_node::getNamespace();  // namespace of this node
 
   std::cout << "--------[bridge_node]-------" << std::endl;
@@ -315,7 +318,8 @@ int main(int argc, char **argv) {
     recv_threads.emplace_back(std::thread(&recv_func, i));
   }
 
-  ros::spin();
+  spinner.start();
+  ros::waitForShutdown();
 
   // ***************** stop send/receive ******************************
   for (int32_t i = 0; i < len_send; ++i) {

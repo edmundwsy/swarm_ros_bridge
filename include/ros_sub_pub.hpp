@@ -23,25 +23,25 @@
 #define __ROS_SUB_PUB__
 #include <ros/ros.h>
 
-#include <quadrotor_msgs/TakeoffLand.h>
-#define MSG_TYPE1  "quadrotor_msgs/TakeoffLand"
-#define MSG_CLASS1 quadrotor_msgs::TakeoffLand
+#include <tf2_msgs/TFMessage.h>
+#define MSG_TYPE1  "tf2_msgs/TFMessage"
+#define MSG_CLASS1 tf2_msgs::TFMessage
 
-#include <geometry_msgs/PolygonStamped.h>
-#define MSG_TYPE2  "geometry_msgs/PolygonStamped"
-#define MSG_CLASS2 geometry_msgs::PolygonStamped
+#include <std_msgs/Empty.h>
+#define MSG_TYPE2  "std_msgs/Empty"
+#define MSG_CLASS2 std_msgs::Empty
 
-#include <std_msgs/String.h>
-#define MSG_TYPE3  "std_msgs/String"
-#define MSG_CLASS3 std_msgs::String
+#include <std_msgs/Float32MultiArray.h>
+#define MSG_TYPE3  "std_msgs/Float32MultiArray"
+#define MSG_CLASS3 std_msgs::Float32MultiArray
 
 #include <geometry_msgs/PoseStamped.h>
 #define MSG_TYPE4  "geometry_msgs/PoseStamped"
 #define MSG_CLASS4 geometry_msgs::PoseStamped
 
-#include <traj_utils/BezierTraj.h>
-#define MSG_TYPE5  "traj_utils/BezierTraj"
-#define MSG_CLASS5 traj_utils::BezierTraj
+#include <traj_utils/MINCOTraj.h>
+#define MSG_TYPE5  "traj_utils/MINCOTraj"
+#define MSG_CLASS5 traj_utils::MINCOTraj
 
 #include <sensor_msgs/PointCloud2.h>
 #define MSG_TYPE6  "sensor_msgs/PointCloud2"
@@ -51,18 +51,23 @@
 #define MSG_TYPE7  "visualization_msgs/Marker"
 #define MSG_CLASS7 visualization_msgs::Marker
 
-#include <decomp_ros_msgs/PolyhedronArray.h>
-#define MSG_TYPE8  "decomp_ros_msgs/PolyhedronArray"
-#define MSG_CLASS8 decomp_ros_msgs::PolyhedronArray
+#include <visualization_msgs/MarkerArray.h>
+#define MSG_TYPE8  "visualization_msgs/MarkerArray"
+#define MSG_CLASS8 visualization_msgs::MarkerArray
 
-#include <nav_msgs/Path.h>
-#define MSG_TYPE9  "nav_msgs/Path"
-#define MSG_CLASS9 nav_msgs::Path
+#include <sensor_msgs/Joy.h>
+#define MSG_TYPE9  "sensor_msgs/Joy"
+#define MSG_CLASS9 sensor_msgs::Joy
 
 #include <nav_msgs/Odometry.h>
 #define MSG_TYPE10  "nav_msgs/Odometry"
 #define MSG_CLASS10 nav_msgs::Odometry
-// ......
+
+#include <quadrotor_msgs/PositionCommand.h>
+#define MSG_TYPE11 "quadrotor_msgs/PositionCommand"
+#define MSG_CLASS11 quadrotor_msgs::PositionCommand
+
+
 
 // #include <xxx/yy.h>
 // #define MSG_TYPE10 "xxx/yy"
@@ -142,6 +147,24 @@ ros::Subscriber topic_subscriber(std::string     topic_name,
 #ifdef MSG_TYPE10
   if (msg_type == MSG_TYPE10) return nh_sub<MSG_CLASS10>(topic_name, nh, i);
 #endif
+#ifdef MSG_TYPE11
+  if (msg_type == MSG_TYPE11) return nh_sub<MSG_CLASS11>(topic_name, nh, i);
+#endif
+#ifdef MSG_TYPE12
+  if (msg_type == MSG_TYPE12) return nh_sub<MSG_CLASS12>(topic_name, nh, i);
+#endif
+#ifdef MSG_TYPE13
+  if (msg_type == MSG_TYPE13) return nh_sub<MSG_CLASS13>(topic_name, nh, i);
+#endif
+#ifdef MSG_TYPE14
+  if (msg_type == MSG_TYPE14) return nh_sub<MSG_CLASS14>(topic_name, nh, i);
+#endif
+#ifdef MSG_TYPE15
+  if (msg_type == MSG_TYPE15) return nh_sub<MSG_CLASS15>(topic_name, nh, i);
+#endif
+#ifdef MSG_TYPE16
+  if (msg_type == MSG_TYPE16) return nh_sub<MSG_CLASS16>(topic_name, nh, i);
+#endif
   ROS_FATAL("Invalid ROS msg_type \"%s\" in configuration!", msg_type.c_str());
   exit(1);
 }
@@ -177,6 +200,24 @@ ros::Publisher topic_publisher(std::string topic_name, std::string msg_type, ros
 #ifdef MSG_TYPE10
   if (msg_type == MSG_TYPE10) return nh.advertise<MSG_CLASS10>(topic_name, 10);
 #endif
+#ifdef MSG_TYPE11
+  if (msg_type == MSG_TYPE11) return nh.advertise<MSG_CLASS11>(topic_name, 10);
+#endif
+#ifdef MSG_TYPE12
+  if (msg_type == MSG_TYPE12) return nh.advertise<MSG_CLASS12>(topic_name, 10);
+#endif
+#ifdef MSG_TYPE13
+  if (msg_type == MSG_TYPE13) return nh.advertise<MSG_CLASS13>(topic_name, 10);
+#endif
+#ifdef MSG_TYPE14
+  if (msg_type == MSG_TYPE14) return nh.advertise<MSG_CLASS14>(topic_name, 10);
+#endif
+#ifdef MSG_TYPE15
+  if (msg_type == MSG_TYPE15) return nh.advertise<MSG_CLASS15>(topic_name, 10);
+#endif
+#ifdef MSG_TYPE16
+  if (msg_type == MSG_TYPE16) return nh.advertise<MSG_CLASS16>(topic_name, 10);
+#endif
   ROS_FATAL("Invalid ROS msg_type \"%s\" in configuration!", msg_type.c_str());
   exit(1);
 }
@@ -211,6 +252,24 @@ void deserialize_publish(uint8_t* buffer_ptr, size_t msg_size, std::string msg_t
 #endif
 #ifdef MSG_TYPE10
   if (msg_type == MSG_TYPE10) return deserialize_pub<MSG_CLASS10>(buffer_ptr, msg_size, i);
+#endif
+#ifdef MSG_TYPE11
+  if (msg_type == MSG_TYPE11) return deserialize_pub<MSG_CLASS11>(buffer_ptr, msg_size, i);
+#endif
+#ifdef MSG_TYPE12
+  if (msg_type == MSG_TYPE12) return deserialize_pub<MSG_CLASS12>(buffer_ptr, msg_size, i);
+#endif
+#ifdef MSG_TYPE13
+  if (msg_type == MSG_TYPE13) return deserialize_pub<MSG_CLASS13>(buffer_ptr, msg_size, i);
+#endif
+#ifdef MSG_TYPE14
+  if (msg_type == MSG_TYPE14) return deserialize_pub<MSG_CLASS14>(buffer_ptr, msg_size, i);
+#endif
+#ifdef MSG_TYPE15
+  if (msg_type == MSG_TYPE15) return deserialize_pub<MSG_CLASS15>(buffer_ptr, msg_size, i);
+#endif
+#ifdef MSG_TYPE16
+  if (msg_type == MSG_TYPE16) return deserialize_pub<MSG_CLASS16>(buffer_ptr, msg_size, i);
 #endif
   ROS_FATAL("Invalid ROS msg_type \"%s\" in configuration!", msg_type.c_str());
   exit(1);

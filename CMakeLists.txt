@@ -10,9 +10,9 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   nav_msgs
   quadrotor_msgs
-  traj_utils
-  decomp_ros_msgs
   visualization_msgs
+  # bspline
+  # exploration_manager
 )
 
 catkin_package(
